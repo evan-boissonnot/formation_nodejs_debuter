@@ -20,8 +20,8 @@ note = new Note(8, cours2, new Date());
 eleve.ajouterNote(note);
 
 eleve.afficherToutes(function(note) {
-    console.log("Note " + note.getValeur() + " a été attribuée à l'élève " + 
-                note.getEleve().getPrenomNom() + " pour le cours " + note.getCours().getLibelle());
+    console.log("Note " + note.valeur + " a été attribuée à l'élève " + 
+                note.eleve.getPrenomNom() + " pour le cours " + note.cours.libelle);
 });
 
 var nameSurname = eleve.getPrenomNom();

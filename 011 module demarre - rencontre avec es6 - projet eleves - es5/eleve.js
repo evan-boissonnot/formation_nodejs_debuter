@@ -33,8 +33,44 @@ Eleve.prototype.ajouterNote = function(note) {
 };
 
 Eleve.prototype.afficherToutes = function(display) {
-    for(var i=0; i < this._notes.length; i++)
+    for(var i=0; this._notes != null && i < this._notes.length; i++) {
         display(this._notes[i]);
+    }
+};
+
+Eleve.prototype.getMoyenne = function() {
+    var total = 0;
+
+    for(var i=0; this._notes != null && i < this._notes.length; i++)
+        total += this._notes[i].getValeur();
+
+    return this._notes != null && this._notes.length > 0 ?  total / this._notes.length : 0;
+};
+
+Eleve.prototype.getMaxNote = function() {
+    var max = 0;
+
+    for(var i=0; this._notes != null && i < this._notes.length; i++) {
+        var valeur = this._notes[i].getValeur();
+        max = valeur > max ? valeur : max; 
+    }
+
+    return max;
+};
+
+Eleve.prototype.getMinNote = function() {
+    var min = 21;
+
+    for(var i=0; this._notes != null && i < this._notes.length; i++) {
+        var valeur = this._notes[i].getValeur();
+        min = valeur < min ? valeur : min; 
+    }
+
+    return min;
+};
+
+Eleve.prototype.getPrenomNom = function() {
+    return this._prenom + " " + this._nom;
 }
 
 module.exports = Eleve;
