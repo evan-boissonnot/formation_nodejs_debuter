@@ -10,10 +10,10 @@ class Eleve{
 
         note.eleve = this;
         
-        console.log("L'élève "  + this.getPrenomNom() + " a " + this._notes.length + " note" + (this._notes.length > 1 ? "s" : ""));
+        let noteLabel = this._notes.length > 1 ? "s" : "";
+        console.log(`L'élève ${this.getPrenomNom()} a ${this._notes.length} note${noteLabel}`);
 
-        console.log("La note " + note.valeur + " a été attribuée à l'élève " + 
-                    this.getPrenomNom() + " pour le cours " + note.cours.libelle);
+        console.log(`La note ${note.valeur} a été attribuée à l'élève ${this.getPrenomNom()} pour le cours ${note.cours.libelle}`);
     }
 
     afficherToutes(display) {
@@ -23,7 +23,7 @@ class Eleve{
     }
 
     getMoyenne() {
-        var total = 0;
+        let total = 0;
 
         for(var i=0; this._notes != null && i < this._notes.length; i++)
             total += this._notes[i].valeur;
@@ -43,7 +43,7 @@ class Eleve{
     }
 
     getMinNote() {
-        var min = 21;
+        let min = 21;
 
         for(var i=0; this._notes != null && i < this._notes.length; i++) {
             var valeur = this._notes[i].valeur;
