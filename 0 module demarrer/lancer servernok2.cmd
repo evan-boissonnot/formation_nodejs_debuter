@@ -1,1 +1,0 @@
-node servernok2.js
