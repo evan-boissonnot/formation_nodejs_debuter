@@ -1,0 +1,18 @@
+{
+  "name": "installexpress",
+  "version": "1.0.0",
+  "description": "Test d'installer express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "start": "node server.js",
+  "dependencies": {
+    "boostrap": "^1.0.0",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3"
+  }
+}
