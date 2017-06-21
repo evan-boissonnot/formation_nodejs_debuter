@@ -1,0 +1,2 @@
+G:\Works\Formations\nodejs\formation_nodejs_debuter\FromExistingCode1\obj\Debug\FromExistingCode1.njsprojResolveAssemblyReference.cache
+G:\Works\Formations\nodejs\formation_nodejs_debuter\FromExistingCode1\bin\Microsoft.NodejsTools.WebRole.dll
