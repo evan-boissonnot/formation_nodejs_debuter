@@ -1,0 +1,16 @@
+{
+    "notes": {
+        "database":{
+            "host": "192.168.1.192",
+            "user": "nodejs",
+            "password": "nodejs!",
+            "name": "mesnotes"
+        },
+        "server": {
+            "port" : 1337
+        },
+        "logging":{
+            "path": "G:\\Tmps\\node.js\\009 138\\error.log"
+        }
+    }
+}
