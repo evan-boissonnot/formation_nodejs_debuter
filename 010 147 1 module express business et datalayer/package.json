@@ -10,6 +10,7 @@
   "license": "ISC",
   "start": "node server.js",
   "dependencies": {
+    "config": "^1.26.1",
     "express": "^4.15.3",
     "jade": "^1.11.0",
     "mysql": "^2.13.0"

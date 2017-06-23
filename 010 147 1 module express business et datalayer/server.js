@@ -1,27 +1,25 @@
+process.env.NODE_CONFIG_DIR = __dirname + "/config";
+
 const express = require("express");
+const config = require('config');
 const app = express();
 const mysql = require('mysql');
-
-const connection = mysql.createConnection({
-  host     : '192.168.1.192',
-  user     : 'nodejs',
-  password : 'nodejs!',
-  database : 'mesnotes'
-});
+const EleveDataLayer = require(__dirname + '/datalayers/EleveDataLayer.js');
+const EleveBusiness = require(__dirname + '/businesses/EleveBusiness.js');
 
 app.set('views', __dirname + "/views");
 app.set('view engine', 'jade');
-
 app.use(express.static(__dirname + '/public'));
 
+
+let eleveDataLayer = new EleveDataLayer(config, mysql);
+let eleveBusiness = new EleveBusiness(eleveDataLayer);
+
 app.get("/", (req, res) => {
-    connection.query("SELECT Nom, Prenom FROM Personne JOIN Eleve ON Personne.Id = Eleve.PersonneId ORDER BY Nom, Prenom;", 
-                     (error, results, fields) => {
-        if(error) {
-            console.log("Erreur sur l'affichage des élèves : " + error.getMessage());
-            throw error;
-        }
-        res.render('index', { title: 'Mes élèves', message: 'test contenu', items: results}); 
+    eleveBusiness.getAll((list) => {
+        res.render('index', { title: 'Mes élèves', message: 'test contenu', items: list}); 
+    }, (error) => {
+        throw error;
     });
 });
 

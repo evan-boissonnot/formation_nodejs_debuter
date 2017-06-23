@@ -1,0 +1,27 @@
+{
+    "notes": {
+        "database":{
+            "host": "192.168.1.192",
+            "user": "nodejs",
+            "password": "nodejs!",
+            "name": "mesnotes"
+        },
+        "server": {
+            "port" : 1337
+        },
+        "logging":{
+            "path": "C:\\Users\\Evan\\Documents\\nodejs\\tmp\\logs\\009 138\\error.log"
+        },
+        "mail":{
+            "to":"evan@boissonnot.fr",
+            "from":"evanboissonnot@gmail.com",
+            "subject": "Error test",
+            "host":"smtp.gmail.com",
+            "username":"le votre",
+            "password":"le votre",
+            "port":465,
+            "tls": false,
+            "ssl": true
+        }
+    }
+}
