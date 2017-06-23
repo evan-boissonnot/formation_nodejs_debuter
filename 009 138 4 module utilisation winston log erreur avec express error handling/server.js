@@ -37,6 +37,7 @@ app.get("/avec-erreur", (req, res) => {
 
 
 
+
 app.listen(config.notes.server.port, () =>  {
     console.log("tout est ok, sur le port d'amsterdam : " + config.notes.server.port);
 });
