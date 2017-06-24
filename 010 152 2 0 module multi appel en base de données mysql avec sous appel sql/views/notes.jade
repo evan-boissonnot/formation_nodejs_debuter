@@ -1,0 +1,6 @@
+include ./note.jade
+
+mixin notes(list)
+    h3 Notes : 
+    each item in list
+        +note(item)

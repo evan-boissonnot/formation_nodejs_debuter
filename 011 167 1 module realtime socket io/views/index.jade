@@ -1,0 +1,51 @@
+include ./block.jade
+include ./eleve-resume.jade
+include ./ajouter-note.jade
+extends ./layout.jade
+
+block append scripts
+  script(src='https://code.jquery.com/jquery-1.11.1.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+  script.
+    var socket = io();
+    $("#btnSendMessage").click(function() {
+      const $control = $("#txtMessage");
+
+      socket.emit('chat', $control.val()); // Envoie au server, 'chat' est très import, c'est la clef d'envoi
+      $control.val('');
+
+      return false;
+    });
+
+    socket.on('chat', function(message) {
+      $(".messages").append(message + "<br />");
+    });
+
+block content
+  .jumbotron
+    .container
+      h1 Hello, world!
+      p
+        | This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.
+      p
+        a.btn.btn-primary.btn-lg(href='#', role='button') Learn more »
+  .container
+    .row
+      +block('Titre1', 'Contenu à afficher', 'http://www.google.fr', 'Détails')
+      +block('Titre1', 'Contenu à afficher', 'http://www.google.fr', 'Détails 2')
+      +block('Titre1', 'Contenu à afficher', 'http://www.google.fr', 'Détails 3')
+  .container
+    each item in items
+      +resumeEleve(item)
+
+  .container
+    div.messages
+
+  .container
+    label Message à envoyer
+    input(id='txtMessage' type='text')
+    button(id='btnSendMessage') Envoyer
+
+
+    
+

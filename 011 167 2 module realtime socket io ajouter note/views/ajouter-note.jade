@@ -1,0 +1,14 @@
+mixin ajouterNote(items)
+    .container
+        label Eleve : 
+        select(id='cmdEleves')
+            each item in items
+                option(value=item.id)= item.getPrenomNom()
+        label Cours : 
+        input(type='text' id='txtCours')
+        label Note : 
+        input(type='text' id='txtValue')
+        button(id='btnAddNote') Ajouter note
+
+        
+            
