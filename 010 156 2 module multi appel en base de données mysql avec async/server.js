@@ -24,39 +24,22 @@ app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req, res) => {
     async.series({
-        chargerEleves: function(callback) {
+        chargerEleves: (callback) => {
             connection.query("SELECT Eleve.Id, Nom, Prenom FROM Personne JOIN Eleve ON Personne.Id = Eleve.PersonneId ORDER BY Nom, Prenom;", 
                      (error, results, fields) => {
                 var list = [];        
                 if(error)
                     callback(error, null);
 
-                async.each(results, (eleveItem, callbackeleve) => {
-                    let eleve = new Eleve(eleveItem.Nom, eleveItem.Prenom);
-                    list.push(eleve);
+                let moncall = function (eleveItem, callbackeleve) {
+                    
+                };
 
-                    connection.query('SELECT Valeur, CoursId FROM Note WHERE EleveId = ' + eleveItem.Id, (error, results, fields) => {
-                        if(error)
-                            callback(error, null);
-                        
-                        async.each(results, (noteItem, callbacknote) => {
-                            let note = new Note(noteItem.Valeur, null, new Date(), eleve);                        
-                            eleve.ajouterNote(note);
-
-                            connection.query('SELECT Nom FROM Cours WHERE Id = ' + noteItem.CoursId, (error, results, fields) => {
-                                if(error)
-                                    callback(error, null);
-                                
-                                let cours = new Cours(results[0].Nom);
-                                note.cours = cours;
-
-                                callbacknote();
-                            });
-                        }, callbackeleve);
-                    });
-                }, function(err) {
+                let moncallFinal = function(err) {
                     res.render('index', { title: 'Mes élèves', message: 'test contenu', items: list}); 
-                })
+                };
+
+                async.each(results, moncall, moncallFinal);
             });
         }
     });

@@ -16,14 +16,20 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get("/", (req, res) => {
+	let mesres = null;
+	
     connection.query("SELECT Nom, Prenom FROM Personne JOIN Eleve ON Personne.Id = Eleve.PersonneId ORDER BY Nom, Prenom;", 
                      (error, results, fields) => {
         if(error) {
             console.log("Erreur sur l'affichage des élèves : " + error.getMessage());
             throw error;
         }
-        res.render('index', { title: 'Mes élèves', message: 'test contenu', items: results}); 
+		
+		mesres = results;
+        
     });
+	
+	res.render('index', { title: 'Mes élèves', message: 'test contenu', items: results}); 
 });
 
 

@@ -19,10 +19,12 @@ eleve.ajouterNote(note);
 note = new Note(8, cours2, new Date());
 eleve.ajouterNote(note);
 
-eleve.afficherToutes(function(note) {
+var display2 = function(note) {
     console.log("Note " + note.getValeur() + " a été attribuée à l'élève " + 
                 note.getEleve().getPrenomNom() + " pour le cours " + note.getCours().getLibelle());
-});
+};
+
+eleve.afficherToutes(display2);
 
 var nameSurname = eleve.getPrenomNom();
 

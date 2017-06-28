@@ -41,7 +41,7 @@ Eleve.prototype.afficherToutes = function(display) {
 Eleve.prototype.getMoyenne = function() {
     var total = 0;
 
-    for(var i=0; this._notes != null && i < this._notes.length; i++)
+    for(var i=0; typeof(this._notes) != "undefined" && this._notes != null && i < this._notes.length; i++)
         total += this._notes[i].getValeur();
 
     return this._notes != null && this._notes.length > 0 ?  total / this._notes.length : 0;
